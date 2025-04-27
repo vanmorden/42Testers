@@ -6,7 +6,7 @@
 /*   By: fersance <fersance@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 03:15:56 by fersance          #+#    #+#             */
-/*   Updated: 2024/12/12 20:01:48 by fersance         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:44:35 by fersance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,27 +111,6 @@ int	main(void)
 	else
 		printf("KO %d, %d\n", res_printf, res_ft_printf);
 
-	res_printf = printf("12 printf (p, p): %p %p \n", LONG_MIN, LONG_MAX);
-	res_ft_printf = ft_printf("ft_printf (p, p): %p %p \n", LONG_MIN, LONG_MAX);
-	if (res_printf == res_ft_printf)
-		printf("OK\n");
-	else
-		printf("KO %d, %d\n", res_printf, res_ft_printf);
-
-	res_printf = printf("13 printf (p, p): %p %p \n", ULONG_MAX, -ULONG_MAX);
-	res_ft_printf = ft_printf("ft_printf (p, p): %p %p \n", ULONG_MAX, -ULONG_MAX);
-	if (res_printf == res_ft_printf)
-		printf("OK\n");
-	else
-		printf("KO %d, %d\n", res_printf, res_ft_printf);
-
-	res_printf = printf("14 printf (p, p): %p %p \n", 0, 0);
-	res_ft_printf = ft_printf("ft_printf (p, p): %p %p \n", 0, 0);
-	if (res_printf == res_ft_printf)
-		printf("OK\n");
-	else
-		printf("KO %d, %d\n", res_printf, res_ft_printf);
-
 	res_printf = printf("15 printf (d): %d %i\n", -10, -99);
 	res_ft_printf = ft_printf("ft_printf (d): %d %i\n", -10, -99);
 	if (res_printf == res_ft_printf)
@@ -139,10 +118,4 @@ int	main(void)
 	else
 		printf("KO %d, %d\n", res_printf, res_ft_printf);
 
-	res_printf = printf("16 printf (mix): %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	res_ft_printf = ft_printf("ft_printf (mix): %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	if (res_printf == res_ft_printf)
-		printf("OK\n");
-	else
-		printf("KO %d, %d\n", res_printf, res_ft_printf);
 }

@@ -1,0 +1,9 @@
+{
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/home/fersance/Documents/myRepos/gnl",
+			"binaryPath": "/home/fersance/Documents/myRepos/gnl/gnltest",
+			"binaryArgs": []
+		}
+	]
+}

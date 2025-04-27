@@ -1,0 +1,59 @@
+{
+    "configurations": [
+        {
+            "name": "launch gnl",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/gnltest",
+            "args": ["1char.txt"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "compile gnl",
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "launch gnl BONUS",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/gnltestbonus",
+            "args": ["1char.txt", "empty.txt", "file0.txt", "file1.txt", "giant_line.txt", "giant_line_nl.txt", "file0.txt", "multiple_nl.txt"
+                //" | cat -e"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "compile gnl BONUS",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ],
+    "version": "2.0.0"
+}
