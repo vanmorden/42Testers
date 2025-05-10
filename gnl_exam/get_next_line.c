@@ -6,7 +6,7 @@
 /*   By: fersance <fersance@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:49:52 by fersance          #+#    #+#             */
-/*   Updated: 2025/05/02 21:47:03 by fersance         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:49:14 by fersance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ char	*get_next_line(int fd)
 				return (ft_strdup(line));
 			}
 			if (buffer_read <= 0)
+			{
+				if (i>0)
+					i = 0;
 				break ;
+			}
 		}
 		line[i] = buffer[buffer_pos++];
 		i++;
