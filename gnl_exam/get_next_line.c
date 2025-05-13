@@ -6,7 +6,7 @@
 /*   By: fersance <fersance@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:49:52 by fersance          #+#    #+#             */
-/*   Updated: 2025/04/27 16:57:24 by fersance         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:34:54 by fersance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ char	*get_next_line(int fd)
 			buffer_read = read(fd, buffer, BUFFER_SIZE);
 			buffer_pos = 0;
 			if (buffer_read <= 0)
-				break;
+				break ;
 		}
 		line[i] = buffer[buffer_pos++];
 		i++;
-		if (buffer[buffer_pos] == '\n')
+		if (buffer[i - 1] == '\n')
 			break ;
 	}
 	line[i] = '\0';
@@ -49,4 +49,3 @@ char	*get_next_line(int fd)
 
 // 	printf("%s\n", get_next_line(fd));
 // }
-
