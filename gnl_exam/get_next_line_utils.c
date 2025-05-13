@@ -6,7 +6,7 @@
 /*   By: fersance <fersance@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:53:42 by fersance          #+#    #+#             */
-/*   Updated: 2025/04/29 17:32:11 by fersance         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:37:27 by fersance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ char	*ft_strdup(char *str)
 	char	*save;
 
 	i = 0;
-	if (!str)
-		return (NULL);
 	while (str[i] != 0)
 		i++;
 	save = malloc(sizeof(char) * (i + 1));
-	if (!save)
+ 	if (!save)
 		return (NULL);
 	i = 0;
 	while (str[i])

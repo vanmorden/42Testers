@@ -6,7 +6,7 @@
 /*   By: fersance <fersance@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:41:37 by fersance          #+#    #+#             */
-/*   Updated: 2025/04/27 18:25:42 by fersance         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:15:41 by fersance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,6 @@ int	proccess_flags(char c, va_list ap)
 	return (count);
 }
 
-			// if (str[i + 1] == 'd')
-			// 	count += print_d(va_arg(ap, int));
-			// else if (str[i + 1] == 'x')
-			// 	count += ft_putnbr(va_arg(ap, unsigned int), 16);
-			// else if (str[i + 1] == 's')
-			// 	count += ft_putstr(va_arg(ap, char *));
-			// else if (str[i + 1] == '%')
-			// 	count += ft_putchar('%');
 int	ft_printf(char *str, ...)
 {
 	va_list		ap;
