@@ -1,17 +1,15 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    py_tools.py                                        :+:      :+:    :+:    #
+#    42tools.py                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cagomez- <fersance@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fersance <fersance@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/25 17:08:13 by fersance          #+#    #+#              #
-#    Updated: 2026/03/25 17:56:33 by cagomez-         ###   ########.fr        #
+#    Updated: 2026/04/09 17:04:31 by fersance         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ...existing code...
-import os
 from pathlib import Path
 import re
 
@@ -39,6 +37,8 @@ def generate_cur_ex_color():
     COLOR_SWITCH_FIRST = 61
     # Para las 3 últimas líneas: cambiar color a partir del carácter 20 (desde el primer '░')
     COLOR_SWITCH_LAST = 20
+    # Número de glifos finales (bloques no-░ contiguos) que irán en púrpura arriba.
+    PURPLE_GLYPHS_FIRST = 2
     # ---------------------------------------------------------------------------------------
 
     # Extraer el contenido dentro de comillas si existe para calcular ancho máximo
@@ -79,22 +79,31 @@ def generate_cur_ex_color():
             colored = ''.join(chars)
         else:
             first_nb, last_nb = non_block_idxs[0], non_block_idxs[-1]
-            width_nb = last_nb - first_nb + 1
-
-            # Encontrar el índice (0-based) del primer '░' en la línea (según requisito)
-            try:
-                first_block_idx = next(i for i, ch in enumerate(chars) if ch == '░')
-            except StopIteration:
-                first_block_idx = 0
-
-            # Determinar columna deseada (0-based index) desde el primer '░'
             if idx < 3:
-                desired_col_index = first_block_idx + (COLOR_SWITCH_FIRST - 1)
-            else:
-                desired_col_index = first_block_idx + (COLOR_SWITCH_LAST - 1)
+                # Para el título superior, colorear en púrpura los últimos glifos
+                # (normalmente el número de módulo), sin depender del padding inicial.
+                runs = []
+                i = first_nb
+                while i <= last_nb:
+                    if chars[i] == '░':
+                        i += 1
+                        continue
+                    j = i
+                    while j <= last_nb and chars[j] != '░':
+                        j += 1
+                    runs.append((i, j - 1))
+                    i = j
 
-            # split es el índice máximo que usa left_col; el cambio empieza en desired_col_index
-            split = desired_col_index - 1
+                purple_runs = max(1, PURPLE_GLYPHS_FIRST)
+                if len(runs) >= purple_runs:
+                    split = runs[-purple_runs][0] - 1
+                else:
+                    desired_col_index = first_nb + (COLOR_SWITCH_FIRST - 1)
+                    split = desired_col_index - 1
+            else:
+                desired_col_index = first_nb + (COLOR_SWITCH_LAST - 1)
+                # split es el índice máximo que usa left_col; el cambio empieza en desired_col_index
+                split = desired_col_index - 1
 
             # clamp split dentro del bloque observado (entre first_nb y last_nb)
             if split < first_nb:
